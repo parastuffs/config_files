@@ -1,0 +1,106 @@
+# conky configuration
+#
+# The list of variables has been removed from this file in favour
+# of keeping the documentation more maintainable.
+# Check http://conky.sf.net for an up-to-date-list.
+#
+# For ideas about how to modify conky, please see:
+# http://crunchbanglinux.org/forums/topic/59/my-conky-config/
+#
+# For help with conky, please see:
+# http://crunchbanglinux.org/forums/topic/2047/conky-help/
+#
+# Enjoy! :)
+##############################################
+# Settings
+##############################################
+background yes
+use_xft yes
+xftfont Liberation Sans:size=9
+xftalpha 1
+update_interval 1.0
+total_run_times 0
+own_window yes
+own_window_transparent yes
+own_window_type desktop
+#own_window_argb_visual yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 200 200
+maximum_width 240
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+default_color 656667
+default_shade_color 000000
+default_outline_color 828282
+alignment top_right
+gap_x 12
+gap_y 56
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale no
+##############################################
+#  Output
+##############################################
+TEXT
+S Y S T E M    I N F O  ${hr}
+Uptime:$alignr$uptime
+RAM:$alignr${color 999999}$mem$color/$memmax
+Swap usage:$alignr$swap/$swapmax
+Disk usage:$alignr${fs_used /}/${fs_size /}
+${diskiograph 000000 ffffff}
+${diskio sda}
+CPU usage:$alignr${cpu cpu0}%
+${cpugraph 789E2D A7CC5C}
+$alignr$loadavg
+${color 555555}Top CPU:$color
+${color 886667}${top name 1} $alignr${top cpu 1}$color
+${top name 2} $alignr${top cpu 2}
+${top name 3} $alignr${top cpu 3}
+${top name 4} $alignr${top cpu 4}
+${top name 5} $alignr${top cpu 5}
+
+${color 555555}Top RAM:$color
+${color 886667}${top_mem name 1} $alignr${top_mem mem 1}$color
+${top name 2} $alignr${top_mem mem 2}
+${top_mem name 3} $alignr${top_mem mem 3}
+${top_mem name 4} $alignr${top_mem mem 4}
+${top_mem name 5} $alignr${top_mem mem 5}
+
+N E T W O R K  ${hr}
+${if_existing /proc/net/route wlan0}
+${wireless_essid wlan0}
+${wireless_link_bar wlan0}
+${downspeedgraph wlan0 789E2D A7CC5C}
+DL ${downspeedf wlan0} kB/s$alignr ${totaldown wlan0}
+${upspeedgraph wlan0 789E2D A7CC5C}
+UL ${upspeedf wlan0} kB/s$alignr ${totalup wlan0}
+${endif}
+${if_existing /proc/net/route eth0}
+${downspeedgraph eth0 789E2D A7CC5C}
+DL ${downspeedf eth0} kB/s$alignr ${totaldown eth0}
+${upspeedgraph eth0 789E2D A7CC5C}
+UL ${upspeedf eth0} kB/s$alignr ${totalup eth0}
+${endif}
+${if_existing /proc/net/route usb0}
+${downspeedgraph usb0 789E2D A7CC5C}
+DL ${downspeedf usb0} kB/s$alignr ${totaldown usb0}
+${upspeedgraph usb0 789E2D A7CC5C}
+UL ${upspeedf usb0} kB/s$alignr ${totalup usb0}
+${endif}
+${if_existing /proc/net/route wlan2}
+${wireless_essid wlan2}
+${wireless_link_bar wlan2}
+${downspeedgraph wlan2 789E2D A7CC5C}
+DL ${downspeedf wlan2} kB/s$alignr ${totaldown wlan2}
+${upspeedgraph wlan2 789E2D A7CC5C}
+UL ${upspeedf wlan2} kB/s$alignr ${totalup wlan2}
+${endif}
+
+#W E A T H E R  ${hr}
+#${weather EBBR temperature}
+
+
